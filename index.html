@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#16223C" />
+<title>만점 스나이퍼 · 중2-1 국어 기말 대비</title>
+<meta name="description" content="중2-1 국어 기말고사 대비 — 3단계 입체 해설(개념 매핑·정답인 이유·오답 킬러)로 왜 틀렸는지까지 잡아내는 학습 앱." />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+html,body{height:100%}
+body{
+  --ink:#16223C;--ink2:#33425F;--bg:#E9ECF3;--card:#FFFFFF;--line:#DCE2EC;
+  --amber:#F59E0B;--amber-d:#C9760A;--indigo:#5B5BE6;--emerald:#0FA372;--red:#E5453C;--muted:#7C889E;
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+.display{font-family:'Black Han Sans',sans-serif;font-weight:400;letter-spacing:-.01em}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px calc(80px + env(safe-area-inset-bottom))}
+button{cursor:pointer;border:none;font-family:inherit;transition:transform .12s ease,box-shadow .12s ease,background .15s}
+button:active{transform:translateY(1px)}
+button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+.hero{background:radial-gradient(120% 100% at 80% -10%,#21345C 0%,#16223C 55%);border-radius:24px;padding:30px 26px 26px;color:#fff;position:relative;overflow:hidden;margin-top:22px}
+.hero::after{content:"";position:absolute;right:-50px;top:-50px;width:230px;height:230px;pointer-events:none;
+  background:radial-gradient(circle,transparent 0 38px,rgba(245,158,11,.16) 38px 40px,transparent 40px),
+  radial-gradient(circle,transparent 0 62px,rgba(245,158,11,.10) 62px 64px,transparent 64px),
+  radial-gradient(circle,transparent 0 86px,rgba(255,255,255,.06) 86px 88px,transparent 88px)}
+.eyebrow{font-size:12.5px;letter-spacing:.22em;color:var(--amber);font-weight:700}
+.hero h1{font-size:42px;line-height:1;margin:10px 0 6px}
+.hero h1 b{color:var(--amber)}
+.hero p{color:#B7C2D8;font-size:14px;max-width:380px}
+.stats{display:flex;gap:22px;margin-top:20px;position:relative;z-index:1}
+.stat .n{font-family:'Black Han Sans';font-size:26px;color:#fff;line-height:1}
+.stat .l{font-size:11.5px;color:#90A0BC;margin-top:3px}
+
+.sec-h{display:flex;align-items:baseline;gap:9px;margin:30px 2px 13px}
+.sec-h .bar{width:5px;height:18px;background:var(--amber);border-radius:3px}
+.sec-h h2{font-size:16px;font-weight:900}
+.sec-h span{font-size:12px;color:var(--muted);margin-left:auto}
+
+.cards{display:grid;gap:12px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;text-align:left;width:100%}
+.cat:hover{box-shadow:0 6px 22px rgba(22,34,60,.10);transform:translateY(-2px)}
+.cat .dot{width:42px;height:42px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center;font-family:'Black Han Sans';font-size:18px;color:#fff}
+.cat .tx{flex:1}
+.cat .tx b{font-size:15.5px;font-weight:700;display:block}
+.cat .tx small{font-size:12px;color:var(--muted)}
+.cat .arw{color:var(--muted);font-size:20px}
+
+.big{background:var(--ink);color:#fff;border-radius:18px;padding:20px 22px;display:flex;align-items:center;gap:16px;width:100%;text-align:left}
+.big:hover{box-shadow:0 10px 30px rgba(22,34,60,.28);transform:translateY(-2px)}
+.big .ico{width:46px;height:46px;flex:0 0 auto}
+.big b{font-size:17px;font-weight:900;display:block}
+.big small{font-size:12.5px;color:#9DAAC4}
+.big .go{margin-left:auto;background:var(--amber);color:var(--ink);font-weight:900;padding:9px 16px;border-radius:10px;font-size:13.5px}
+
+.top{display:flex;align-items:center;gap:12px;padding:18px 2px 6px}
+.exit{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-size:13px;font-weight:700;color:var(--ink2)}
+.pill{font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;color:#fff}
+.time{margin-left:auto;font-family:'Black Han Sans';font-size:15px;color:var(--ink2);background:var(--card);border:1px solid var(--line);padding:5px 12px;border-radius:10px}
+.time.run{color:var(--red)}
+
+.prog{display:flex;gap:5px;flex-wrap:wrap;margin:8px 2px 0}
+.prog i{width:9px;height:9px;border-radius:50%;background:#CFD6E2;display:inline-block}
+.prog i.cur{outline:2px solid var(--ink);outline-offset:1px}
+.prog i.ok{background:var(--emerald)}
+.prog i.no{background:var(--red)}
+
+.q{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-top:14px;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.qnum{font-size:12px;font-weight:700;color:var(--amber-d);letter-spacing:.04em}
+.qtext{font-size:17px;font-weight:700;margin:6px 0 0;line-height:1.5}
+.passage{background:#F4F6FA;border-left:4px solid var(--ink2);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0 4px;font-size:14.5px;color:var(--ink2);white-space:pre-line}
+
+.choices{display:grid;gap:9px;margin-top:16px}
+.ch{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;display:flex;gap:11px;align-items:flex-start;text-align:left;font-size:15px;width:100%;color:var(--ink)}
+.ch:hover{border-color:var(--ink2)}
+.ch .cn{font-weight:900;flex:0 0 auto}
+.ch.sel{border-color:var(--ink);background:#F2F5FB}
+.ch.correct{border-color:var(--emerald);background:#E9F8F1}
+.ch.wrong{border-color:var(--red);background:#FCEDEC}
+.ch:disabled{cursor:default}
+.ch .tag{margin-left:auto;font-size:11.5px;font-weight:800;flex:0 0 auto}
+
+.submit{width:100%;margin-top:16px;background:var(--ink);color:#fff;font-weight:900;font-size:16px;padding:15px;border-radius:13px}
+.submit:disabled{background:#AEB8CA}
+.next{width:100%;margin-top:14px;background:var(--amber);color:var(--ink);font-weight:900;font-size:16px;padding:15px;border-radius:13px}
+
+.exp{margin-top:16px;display:grid;gap:10px;animation:slide .3s ease}
+@keyframes slide{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.verdict{font-family:'Black Han Sans';font-size:18px;padding:4px 2px}
+.verdict.ok{color:var(--emerald)}.verdict.no{color:var(--red)}
+.block{border-radius:13px;padding:14px 16px;font-size:14.5px}
+.block .h{font-weight:900;font-size:12.5px;letter-spacing:.02em;display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.block .h .mk{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:900}
+.b-con{background:#EEEFFE}.b-con .mk{background:var(--indigo)}.b-con .h{color:var(--indigo)}
+.b-rea{background:#E8F8F1}.b-rea .mk{background:var(--emerald)}.b-rea .h{color:var(--emerald)}
+.b-kil{background:#FCECEB;border:1.5px solid #F6C9C6}.b-kil .mk{background:var(--red)}.b-kil .h{color:var(--red)}
+.b-kil .h .star{margin-left:auto;font-size:10.5px;background:var(--red);color:#fff;padding:2px 7px;border-radius:999px;letter-spacing:0}
+
+.res-hero{background:var(--ink);color:#fff;border-radius:24px;padding:30px 24px;text-align:center;margin-top:22px}
+.ring{width:150px;height:150px;margin:6px auto 4px;position:relative;border-radius:50%}
+.ring .sc{position:absolute;inset:11px;display:grid;place-items:center;background:var(--ink);border-radius:50%}
+.ring .sc b{font-family:'Black Han Sans';font-size:46px;line-height:.9}
+.ring .sc small{font-size:12px;color:#9DAAC4}
+.acc{font-size:14px;color:#B7C2D8;margin-top:4px}.acc b{color:var(--amber);font-weight:900}
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:16px}
+.tr{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px}
+.tr:last-child{border-bottom:none}
+.tr .nm{font-weight:700;flex:1;display:flex;align-items:center;gap:9px}
+.tr .nm i{width:10px;height:10px;border-radius:3px}
+.tr .ba{width:120px;height:8px;background:#EDF0F5;border-radius:99px;overflow:hidden;margin:0 12px}
+.tr .ba span{display:block;height:100%;background:var(--emerald);border-radius:99px}
+.tr .vv{font-family:'Black Han Sans';font-size:14px;width:46px;text-align:right}
+.actions{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:16px}
+.act{padding:14px;border-radius:13px;font-weight:900;font-size:14.5px}
+.act.p{background:var(--ink);color:#fff}.act.s{background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.act.full{grid-column:1/3;background:var(--amber);color:var(--ink)}
+
+.essay{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-top:14px}
+.cond{background:#FFF7E8;border:1px solid #F3DCA8;border-radius:11px;padding:11px 14px;font-size:13.5px;margin-top:12px;color:#8a6400}
+.cond b{color:var(--amber-d)}
+.reveal{width:100%;margin-top:14px;background:var(--ink);color:#fff;font-weight:900;font-size:15px;padding:13px;border-radius:12px}
+.model{margin-top:14px;animation:slide .3s}
+.model .lab{font-size:12px;font-weight:900;color:var(--emerald);margin-bottom:5px}
+.model .ans{background:#E8F8F1;border-radius:11px;padding:13px 15px;font-size:14.5px}
+.model .lab2{font-size:12px;font-weight:900;color:var(--red);margin:13px 0 5px}
+.model .rub{background:#FCECEB;border-radius:11px;padding:11px 15px 11px 30px;font-size:13.5px}
+.model .rub li{margin:3px 0}
+
+.foot{text-align:center;color:var(--muted);font-size:11.5px;margin-top:34px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:480px){.hero h1{font-size:34px}.stats{gap:16px}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ===== 조준선 SVG ===== */
+function reticle(size){size=size||46;var c='#F59E0B';
+  return '<svg viewBox="0 0 48 48" width="'+size+'" height="'+size+'" fill="none">'+
+  '<circle cx="24" cy="24" r="20" stroke="'+c+'" stroke-width="2" opacity=".5"/>'+
+  '<circle cx="24" cy="24" r="11" stroke="'+c+'" stroke-width="2"/>'+
+  '<circle cx="24" cy="24" r="2.5" fill="'+c+'"/>'+
+  '<path d="M24 1v9M24 38v9M1 24h9M38 24h9" stroke="'+c+'" stroke-width="2" stroke-linecap="round"/></svg>';}
+
+/* ===== 데이터 ===== */
+var CATS={
+  lit :{name:"문학",color:"#5B5BE6",desc:"표현법 · 운율 · 소설 구성 · 심상"},
+  gram:{name:"문법",color:"#0FA372",desc:"담화 · 음운 · 단어 · 품사 · 어휘"},
+  read:{name:"읽기",color:"#E07B00",desc:"설명 방법 · 글의 통일성"},
+  voca:{name:"어휘",color:"#C0497B",desc:"한자성어 · 속담 · 관용어"}
+};
+
+var Q=[
+/* ══ 문학 (17문항) ══════════════════════════════════════════════════════ */
+{cat:"lit",topic:"반어와 역설",passage:`"시험을 망쳤는데 엄마는 나를 보고 '잘~한다, 잘해!'라며 한숨을 쉬셨다."`,
+ q:"위 보기의 밑줄 친 부분과 같은 표현 방법이 쓰인 시구는?",
+ choices:["죽어도 아니 눈물 흘리우리다","이것은 소리 없는 아우성","찬란한 슬픔의 봄을","외로운 황홀한 심사이어니","두 볼에 흐르는 빛이 고와서 서러워라"],ans:0,
+ con:"반어(아이러니)는 속마음과 반대로 말하는 것, 역설은 문장 자체가 모순이지만 그 속에 진실을 담는 것. 보기는 속마음과 반대로 말한 '반어'다.",
+ rea:"①은 김소월 '진달래꽃'으로, 속으로는 눈물이 나지만 겉으로는 울지 않겠다고 반대로 말한 반어법이라 보기와 같다.",
+ kil:"②~⑤는 모두 '소리 없는 아우성 / 찬란한 슬픔 / 외로운 황홀 / 고와서 서러워라'처럼 동시에 공존할 수 없는 말이 부딪히는 역설이다. '반대로 말하기(반어)'와 '말이 안 되기(역설)'를 꼭 구별하자."},
+{cat:"lit",topic:"비유 - 은유",q:`"내 마음은 호수요"에 쓰인 표현 방법은?`,
+ choices:["직유법","은유법","의인법","반복법","과장법"],ans:1,
+ con:"은유는 'A는 B이다' 형식으로 원관념과 보조관념을 직접 연결한다. 직유는 '~처럼/같이'를 쓴다.",
+ rea:"'내 마음(원관념)은 호수(보조관념)요'처럼 연결어 없이 바로 빗댔으므로 은유다.",
+ kil:"'~처럼/같이/듯이'가 보이면 직유다. 여기엔 그 말이 없는데도 직유 ①로 고르면 함정에 걸린다."},
+{cat:"lit",topic:"비유 - 의인",q:`"꽃이 방긋 웃는다"에 쓰인 표현 방법은?`,
+ choices:["직유법","은유법","의인법","대구법","도치법"],ans:2,
+ con:"의인법은 사람이 아닌 대상에게 사람의 행동·감정을 부여하는 표현이다.",
+ rea:"꽃(사물)이 '웃는다'는 사람의 행동을 하므로 의인법이다.",
+ kil:"활유법과 헷갈리지 말 것. 활유는 무생물에 '생명·움직임'만 주는 것이고, '웃다·말하다'처럼 사람만의 행동이면 의인법이다."},
+{cat:"lit",topic:"비유 - 직유",q:`"내 누나의 얼굴은 달처럼 둥글다"에서 쓰인 표현 방법과 그 근거로 맞는 것은?`,
+ choices:["은유법 — '달'이 원관념이므로","직유법 — '처럼'이라는 연결어가 있으므로","의인법 — 달이 사람처럼 묘사되므로","상징 — 달이 추상적 관념을 나타내므로","과장법 — 실제와 다르게 부풀려서"],ans:1,
+ con:"직유는 '~처럼/같이/듯이' 같은 연결어를 써서 두 대상을 비교한다.",
+ rea:"'달처럼'에 연결어 '처럼'이 있으므로 직유법이다. 원관념은 '누나의 얼굴', 보조관념은 '달'이다.",
+ kil:"①처럼 '달'을 원관념으로 뒤바꾸는 오답이 잘 나온다. 비유에서 원관념은 설명하려는 대상(누나의 얼굴), 보조관념은 비교 수단(달)임을 기억하자."},
+{cat:"lit",topic:"상징",q:"'비둘기'로 평화를 나타내듯, 추상적 관념을 구체적 사물로 드러내는 표현 방법은?",
+ choices:["비유","상징","반어","운율","심상"],ans:1,
+ con:"상징은 원관념을 숨기고 보조관념만 제시해 추상적 의미를 드러낸다. 비유는 두 대상의 유사성이 분명하다.",
+ rea:"비둘기(구체물)로 평화(추상)를 나타내며 원관념 '평화'가 직접 드러나지 않으므로 상징이다.",
+ kil:"비유는 원관념-보조관념이 1:1로 분명하지만, 상징은 의미가 여러 갈래로 열려 있다. '~같다'로 바꿔 자연스러우면 비유, 어색하면 상징이다."},
+{cat:"lit",topic:"운율",q:"글자 수·음보의 규칙적 반복처럼 겉으로 드러나는 리듬을 무엇이라 하는가?",
+ choices:["내재율","외형률","산문율","압운","음성률"],ans:1,
+ con:"운율은 시의 리듬이다. 외형률은 규칙이 겉으로 드러나고(음수율·음보율), 내재율은 자유시처럼 내면에 은근히 흐른다.",
+ rea:"'규칙적 반복이 겉으로 드러난다'고 했으므로 외형률이다.",
+ kil:"현대 자유시는 대부분 내재율이고, 시조·민요처럼 형식이 정해진 정형시가 외형률이다. '드러난다'는 표현이 핵심 단서."},
+{cat:"lit",topic:"시조의 형식",passage:`청산리 벽계수야 수이 감을 자랑 마라
+일도 창해하면 다시 오기 어려워라
+명월이 만공산하니 쉬어 간들 어떠리`,
+ q:"위 시조의 형식에 대한 설명으로 옳지 않은 것은?",
+ choices:["3장 6구 45자 내외의 정형시다","초장·중장·종장으로 구성된다","종장의 첫 음보는 반드시 3음절이다","작자는 황진이로 알려져 있다","내재율로 유연하게 흐르는 시다"],ans:4,
+ con:"시조는 3장(초장·중장·종장) 6구 45자 내외의 정형시로, 3·4조 또는 4·4조 음수율의 외형률을 가진다.",
+ rea:"시조는 글자 수와 음수율이 규칙적으로 드러나는 '외형률' 시다. '내재율'이라는 ⑤가 틀렸다.",
+ kil:"종장 첫 음보가 3음절이라는 ③은 시조의 중요한 특징이라 함정처럼 보이지만 맞는 설명이다. '외형률↔내재율'의 구분이 핵심 포인트."},
+{cat:"lit",topic:"소설 구성단계",q:"갈등이 최고조에 이르고 사건 해결의 실마리가 보이는 소설 구성 단계는?",
+ choices:["발단","전개","위기","절정","결말"],ans:3,
+ con:"발단(인물·배경 제시) → 전개(갈등 시작) → 위기(갈등 심화) → 절정(갈등 최고조·전환점) → 결말(해결).",
+ rea:"'갈등 최고조 + 해결의 실마리'는 절정 단계의 특징이다.",
+ kil:"위기(③)와 자주 혼동된다. 위기는 갈등이 '심화'되며 긴장이 쌓이는 단계지 최고조는 아니다. '실마리가 보인다'면 절정이다."},
+{cat:"lit",topic:"갈등의 유형",q:`"친구를 도와줄까 말까 마음속으로 고민하는" 상황의 갈등 유형은?`,
+ choices:["인물과 인물의 갈등","인물과 사회의 갈등","인물과 운명의 갈등","인물과 자연의 갈등","내적 갈등"],ans:4,
+ con:"갈등은 내적 갈등(한 인물의 마음속)과 외적 갈등(인물 vs 인물/사회/자연/운명)으로 나뉜다.",
+ rea:"한 인물의 마음속에서 두 마음이 부딪히므로 내적 갈등이다.",
+ kil:"'인물과 인물'(①)로 헷갈리기 쉽지만, 부딪히는 상대가 '타인'이 아니라 '자기 자신의 마음'이면 내적 갈등이다."},
+{cat:"lit",topic:"소설의 시점",q:"작품 밖 서술자가 모든 인물의 속마음까지 다 아는 듯 서술하는 시점은?",
+ choices:["1인칭 주인공 시점","1인칭 관찰자 시점","3인칭 관찰자 시점","전지적 작가 시점","액자식 구성"],ans:3,
+ con:"전지적 작가 시점은 작품 밖 서술자가 신처럼 모든 인물의 속마음까지 다 안다.",
+ rea:"'심리(속마음)까지 모두 아는' 서술이므로 전지적 작가 시점이다.",
+ kil:"3인칭 관찰자 시점(③)은 겉으로 보이는 행동만 서술하고 속마음은 모른다. '속마음까지'면 전지적이다."},
+{cat:"lit",topic:"1인칭 관찰자 시점",passage:`나는 옆 집 영수가 매일 밤 혼자 공부하는 모습을 창문 너머로 지켜봤다. 그가 무슨 생각을 하는지는 알 수 없었지만, 그의 눈빛은 언제나 무언가를 향해 타오르고 있었다.`,
+ q:"위 지문의 서술 방식에 해당하는 시점은?",
+ choices:["전지적 작가 시점","1인칭 주인공 시점","1인칭 관찰자 시점","3인칭 관찰자 시점","작가 관찰자 시점"],ans:2,
+ con:"1인칭 관찰자 시점은 '나'가 서술자이지만 주인공(다른 인물)의 심리는 모른 채 겉모습만 관찰해 서술한다.",
+ rea:"'나'가 서술하고 있고(1인칭), '그가 무슨 생각을 하는지는 알 수 없었다'고 심리를 모른다고 밝혔으므로 1인칭 관찰자 시점이다.",
+ kil:"1인칭 주인공(②)은 '나'가 이야기의 중심인물이다. 여기선 중심인물이 '영수'고 '나'는 주변에서 관찰하는 존재이므로 관찰자 시점이다."},
+{cat:"lit",topic:"심상",q:`"어머니의 손은 거칠거칠하다"에 주로 나타난 심상(이미지)은?`,
+ choices:["시각적 심상","청각적 심상","촉각적 심상","후각적 심상","미각적 심상"],ans:2,
+ con:"심상은 시를 읽을 때 오감으로 떠오르는 느낌이다. 촉각은 피부로 느끼는 감촉이다.",
+ rea:"'거칠거칠하다'는 손으로 만졌을 때의 감촉이므로 촉각적 심상이다.",
+ kil:"'거칠거칠'을 소리로 여겨 청각(②)을 고르면 안 된다. 만진 느낌이므로 촉각이다."},
+{cat:"lit",topic:"표현법 - 대구",q:`"하늘은 높고 바다는 깊다"처럼 비슷한 구조의 구절을 나란히 짝지은 표현법은?`,
+ choices:["대구법","반복법","점층법","도치법","설의법"],ans:0,
+ con:"대구법은 짜임이 비슷한 두 구절을 나란히 배열해 운율과 안정감을 준다.",
+ rea:"'하늘은 높고 / 바다는 깊다'가 같은 구조로 짝을 이루므로 대구법이다.",
+ kil:"반복법(②)은 '같은 말'을 되풀이하는 것이다. 대구는 '같은 말'이 아니라 '같은 구조'라는 점이 다르다."},
+{cat:"lit",topic:"표현법 - 설의",q:"답이 정해진 것을 일부러 물음의 형식으로 강조하는 표현법은?",
+ choices:["영탄법","설의법","반어법","과장법","대구법"],ans:1,
+ con:"설의법은 누구나 아는 답을 의문문으로 던져 의미를 강조한다.",
+ rea:"'이보다 더 아름다울 수 있을까?'처럼 답이 뻔한 물음으로 강조하면 설의법이다.",
+ kil:"의문문이라고 모두 설의법은 아니다. 정말 답을 몰라서 묻는 건 그냥 의문문이고, '답이 정해진' 물음만 설의법이다."},
+{cat:"lit",topic:"표현법 - 점층",q:`"작은 실망이 큰 슬픔이 되고, 큰 슬픔이 깊은 절망이 되었다."에 쓰인 표현법은?`,
+ choices:["대구법","반복법","점층법","도치법","열거법"],ans:2,
+ con:"점층법은 의미·강도가 단계적으로 커지도록 표현을 쌓아 올리는 방법이다.",
+ rea:"'작은 실망 → 큰 슬픔 → 깊은 절망'으로 감정의 강도가 점점 강해지므로 점층법이다.",
+ kil:"대구법(①)은 같은 구조를 나란히 놓지만 강도 변화가 없다. 여기선 '단계적 강도 상승'이 핵심이므로 점층법이다."},
+{cat:"lit",topic:"표현법 - 도치",q:`"그리워라, 그 시절이"처럼 정상적인 문장 성분의 순서를 바꾸는 표현법은?`,
+ choices:["반복법","도치법","설의법","열거법","영탄법"],ans:1,
+ con:"도치법은 강조를 위해 문장 성분(주어·목적어·서술어)의 순서를 바꾼다.",
+ rea:"원래 '그 시절이 그리워라'(주어+서술어)를 뒤집어 서술어를 먼저 썼으므로 도치법이다.",
+ kil:"영탄법(⑤)은 '아!/오!' 같은 감탄사로 강한 감정을 터뜨리는 것이다. 여기선 감탄사가 아니라 어순이 바뀐 것이 핵심이다."},
+{cat:"lit",topic:"소설 인물의 유형",q:"'전형적 인물'에 대한 설명으로 알맞은 것은?",
+ choices:["작품 속에서 성격이 크게 변하는 인물","한 계층이나 집단의 보편적 특성을 대표하는 인물","작가 자신의 경험을 직접 반영한 인물","선악이 뚜렷하지 않고 복잡한 심리를 지닌 인물","단 하나의 특징만을 지닌 평면적 인물"],ans:1,
+ con:"소설 인물은 전형적(집단 대표)↔개성적(독특한 개인), 평면적(변화 없음)↔입체적(변화 있음)으로 분류된다.",
+ rea:"전형적 인물은 특정 계층·집단(농민, 지식인 등)의 보편적 속성을 대표하는 인물이다.",
+ kil:"'단 하나의 특징'(⑤)은 평면적 인물의 설명이다. 전형적↔평면적을 같은 개념으로 혼동하지 말 것."},
+/* ══ 문법 (12문항) ══════════════════════════════════════════════════════ */
+{cat:"gram",topic:"담화의 구성 요소",passage:`민우: "너 이번 주말에 시간 있어?"
+지수: "어제 떡볶이 먹었어."`,
+ q:"위 대화에서 담화가 원활하지 않은 가장 큰 원인은?",
+ choices:["화자가 명확하지 않아서","청자의 태도가 불손해서","대화의 '맥락'이 고려되지 않아서","발화가 문법적으로 틀려서","대화 장소가 적절하지 않아서"],ans:2,
+ con:"담화가 성립하려면 화자·청자·발화뿐 아니라 대화의 배경인 '맥락'이 통해야 한다.",
+ rea:"민우의 질문(주말 일정)이라는 맥락에 지수가 엉뚱한 대답(과거의 식사)을 해 맥락이 끊겼다.",
+ kil:"④를 고르기 쉽지만 '어제 떡볶이 먹었어'는 그 자체로 완벽한 문장이다. 문장의 문제가 아니라 '맥락 호응'의 문제임을 놓치지 말 것."},
+{cat:"gram",topic:"발화의 기능",q:"'발화의 기능'이 나머지 넷과 다른 것은?",
+ choices:["배가 고프니 밥 좀 줘.","창문 좀 닫아 줄 수 있어?","이것 좀 들어 줘.","오늘 날씨가 정말 좋다.","숙제 대신 해 줄래?"],ans:3,
+ con:"발화 기능은 정보 전달(진술)·요청·명령·질문·약속 등으로 나뉜다. '~해 줘/줄 수 있어?'는 표면 형식이 달라도 요청·명령 기능이다.",
+ rea:"④ '오늘 날씨가 정말 좋다'는 날씨에 대한 정보(감상)를 전달하는 진술 기능이다. 나머지는 모두 상대에게 행동을 요구하는 요청·명령 기능이다.",
+ kil:"②처럼 의문문 형태라도 실제 기능이 요청이면 요청으로 본다. '형식(문장 종류)'이 아니라 '기능(의도)'으로 판단하는 것이 핵심이다."},
+{cat:"gram",topic:"음운 - 단모음",q:"우리말의 단모음(발음 도중 입술·혀가 변하지 않는 모음)은 모두 몇 개인가?",
+ choices:["8개","10개","14개","19개","21개"],ans:1,
+ con:"단모음은 'ㅏ ㅐ ㅓ ㅔ ㅗ ㅚ ㅜ ㅟ ㅡ ㅣ' 10개다. 이중모음 11개와 합치면 모음은 모두 21개다.",
+ rea:"표준 발음 기준 단모음은 10개다.",
+ kil:"자음 19개, 모음 21개와 헷갈리면 안 된다. '단모음'만 물으면 10개가 정답이다."},
+{cat:"gram",topic:"음운 변동 - 음절의 끝소리",q:"'부엌'을 단독으로 발음할 때 실제로 나는 소리로 알맞은 것은?",
+ choices:["[부엌]","[부억]","[부읔]","[부엑]","[부엔]"],ans:1,
+ con:"받침으로 올 수 있는 소리는 ㄱ·ㄴ·ㄷ·ㄹ·ㅁ·ㅂ·ㅇ 7개뿐이다(음절의 끝소리 규칙). ㅋ은 ㄱ으로 교체된다.",
+ rea:"'부엌'의 받침 ㅋ은 음절 끝에서 대표음 ㄱ으로 바뀌어 [부억]으로 발음된다.",
+ kil:"'부엌이'처럼 모음이 이어지면 ㅋ이 살아나 [부어키]로 연음된다. 단독 발음과 연음을 혼동하지 말 것."},
+{cat:"gram",topic:"단어의 짜임",q:"'풋사과'의 단어 짜임으로 알맞은 것은?",
+ choices:["단일어","합성어","파생어","어근+어근","합성어이자 파생어"],ans:2,
+ con:"복합어는 합성어(어근+어근)와 파생어(어근+접사)로 나뉜다. 접사가 붙으면 파생어다.",
+ rea:"'풋-'(접두사) + '사과'(어근), 즉 접사+어근이므로 파생어다.",
+ kil:"'사과나무'처럼 어근+어근이면 합성어다. '풋-, 맨-, -꾸러기, -개' 같은 접사가 보이면 파생어로 판단하자."},
+{cat:"gram",topic:"합성어와 파생어 구분",q:"다음 중 합성어에 해당하는 것은?",
+ choices:["풋사과","맨손","군소리","책상","어린이"],ans:3,
+ con:"합성어는 두 개 이상의 어근이 결합한 것, 파생어는 어근에 접두사나 접미사가 붙은 것이다.",
+ rea:"'책상(冊床)'은 어근 '책'과 어근 '상'이 결합한 합성어다. ①풋-(접두)+사과, ②맨-(접두)+손, ③군-(접두)+소리, ⑤어린(어근)+이(접미)는 모두 파생어다.",
+ kil:"'맨손'을 합성어로 착각하기 쉽다. '맨-'은 접두사이므로 파생어다. '어린이'의 '-이'도 접미사임에 주의."},
+{cat:"gram",topic:"품사 - 관형사",q:`밑줄 친 '새'의 품사는?  →  "나는 새 옷을 샀다."`,
+ choices:["명사","대명사","관형사","형용사","부사"],ans:2,
+ con:"관형사는 체언(명사 등) 앞에서 꾸며 주며 형태가 변하지 않는다.",
+ rea:"'새'가 명사 '옷'을 꾸미고, 조사가 붙지 않으며 형태도 변하지 않으므로 관형사다.",
+ kil:"'새롭다'(형용사)와 혼동하면 안 된다. 형용사는 '새로운·새롭고'처럼 활용(형태 변화)하지만 '새'는 변하지 않으므로 관형사다."},
+{cat:"gram",topic:"품사 - 수사",q:`"사과 다섯을 먹었다"에서 '다섯'의 품사는?`,
+ choices:["관형사","수사","명사","부사","조사"],ans:1,
+ con:"수사는 수량·순서를 나타내는 체언으로 조사가 붙을 수 있다. 수 관형사는 체언을 꾸미며 조사가 안 붙는다.",
+ rea:"'다섯을'처럼 조사 '을'이 붙었으므로 체언, 즉 수사다.",
+ kil:`"사과 다섯 개"의 '다섯'은 '개'를 꾸미고 조사가 없으니 수 관형사다. 조사가 붙느냐로 수사와 관형사를 구별한다.`},
+{cat:"gram",topic:"품사 - 부사",q:`"그는 매우 빠르게 달렸다"에서 '매우'의 품사와 역할로 옳은 것은?`,
+ choices:["형용사 — '달렸다'를 꾸밈","부사 — '빠르게'를 꾸밈","관형사 — '빠른'을 꾸밈","동사 — 서술어로 쓰임","조사 — 앞말에 의미를 더함"],ans:1,
+ con:"부사는 용언(동사·형용사)이나 다른 부사·관형사·문장 전체를 꾸미며 형태가 변하지 않는다.",
+ rea:"'매우'는 형용사 '빠르게'(용언)를 꾸미는 부사다.",
+ kil:"'달렸다'를 꾸긴다고 ①을 고르기 쉽지만 '매우'가 직접 수식하는 건 '빠르게'이지 '달렸다'가 아니다. 수식 관계의 직접 대상을 정확히 파악해야 한다."},
+{cat:"gram",topic:"어휘의 체계",q:"다음 중 '한자어'에 해당하는 것은?",
+ choices:["하늘","학교","버스","컴퓨터","어머니"],ans:1,
+ con:"어휘는 고유어(순우리말)·한자어(한자 기반)·외래어(외국에서 들어와 정착)로 나뉜다.",
+ rea:"'학교(學校)'는 한자로 이루어진 말이므로 한자어다.",
+ kil:"'버스·컴퓨터'는 외래어, '하늘·어머니'는 고유어다. 한자로 바꿔 쓸 수 있으면 한자어로 판단한다."},
+{cat:"gram",topic:"고유어와 외래어",q:"다음 중 고유어만으로 묶인 것은?",
+ choices:["하늘, 바다, 피아노","나무, 구름, 빵","강, 산, 소나무","손, 발, 마음","라디오, 텔레비전, 인터넷"],ans:3,
+ con:"고유어는 한자나 외국어에서 빌리지 않은 순수한 우리말이다.",
+ rea:"'손·발·마음'은 모두 순우리말 고유어다.",
+ kil:"'빵'(포르투갈어 pão), '피아노'(이탈리아어), '강·산'(한자어 江·山)처럼 익숙한 단어가 외래어·한자어인 경우가 많다. 느낌만으로 판단하면 함정에 걸린다."},
+{cat:"gram",topic:"문장 성분 - 주성분",q:"다음 중 문장의 '주성분'이 아닌 것은?",
+ choices:["주어","서술어","목적어","관형어","보어"],ans:3,
+ con:"문장 성분은 주성분(주어·서술어·목적어·보어)과 부속 성분(관형어·부사어), 독립 성분(독립어)으로 나뉜다.",
+ rea:"관형어는 체언을 꾸미는 '부속 성분'이므로 주성분이 아니다.",
+ kil:"보어(④)는 '되다·아니다' 앞에서 꼭 필요한 성분이라 주성분에 포함된다. 관형어와 부사어가 부속 성분이다."},
+/* ══ 읽기 (6문항) ════════════════════════════════════════════════════════ */
+{cat:"read",topic:"설명 방법 - 정의",q:`"민주주의란 국민이 주인이 되는 정치 제도이다."에 쓰인 설명 방법은?`,
+ choices:["예시","정의","비교","분류","인과"],ans:1,
+ con:"정의는 대상의 뜻을 명확히 밝히는 방법으로 'A란 B이다' 형식을 띤다.",
+ rea:"'민주주의란 ~이다'로 개념의 뜻을 풀이했으므로 정의다.",
+ kil:"예시(①)는 구체적 예를 드는 것이다. 뜻풀이면 정의, 사례 나열이면 예시로 구분한다."},
+{cat:"read",topic:"설명 방법 - 대조",q:`"고래는 새끼를 낳지만, 상어는 알을 낳는다."에 쓰인 설명 방법은?`,
+ choices:["비교","대조","분석","분류","정의"],ans:1,
+ con:"비교는 공통점을, 대조는 차이점을 중심으로 설명한다.",
+ rea:"고래와 상어의 번식 방식 '차이점'을 드러냈으므로 대조다.",
+ kil:"비교(①)와 헷갈리기 쉽다. '~지만·반면'처럼 차이를 부각하면 대조, '~처럼·마찬가지로'면 비교다."},
+{cat:"read",topic:"설명 방법 - 분류",q:`"악기는 연주 방법에 따라 현악기, 관악기, 타악기로 나눌 수 있다."에 쓰인 설명 방법은?`,
+ choices:["분석","분류(구분)","예시","정의","인과"],ans:1,
+ con:"분류·구분은 여러 대상을 일정 기준으로 묶거나 나눈다. 분석은 하나의 대상을 구성 요소로 쪼갠다.",
+ rea:"악기를 '연주법'이라는 기준에 따라 종류별로 나눴으므로 분류(구분)다.",
+ kil:"분석(①)과 구별하자. '시계는 시침·분침·태엽으로 이루어진다'처럼 한 대상을 부분으로 쪼개면 분석이다."},
+{cat:"read",topic:"설명 방법 - 인과",q:`"기온이 오르면서 빙하가 녹고 해수면이 상승했다."에 쓰인 설명 방법은?`,
+ choices:["과정","인과","비교","예시","정의"],ans:1,
+ con:"인과는 원인과 결과의 관계로 설명한다. 과정은 시간·절차의 순서로 설명한다.",
+ rea:"'기온 상승(원인) → 빙하가 녹고 해수면 상승(결과)'이므로 인과다.",
+ kil:"과정(①)과 헷갈린다. 과정은 '먼저 ~한 뒤 ~한다'처럼 단계 순서다. '~때문에·~해서 ~되다'면 인과다."},
+{cat:"read",topic:"글의 통일성",q:"글의 모든 문장이 하나의 주제를 향해 긴밀히 연결되어야 한다는 원리는?",
+ choices:["응집성","통일성","완결성","객관성","정확성"],ans:1,
+ con:"통일성은 글의 모든 내용이 하나의 주제로 모이는 것(주제에서 벗어난 문장 배제). 응집성은 접속어·지시어로 문장이 매끄럽게 이어지는 형식적 연결이다.",
+ rea:"'하나의 주제를 향해' 모인다는 것은 내용상 일관성, 즉 통일성이다.",
+ kil:"응집성(①)과 구별하자. 통일성은 '내용(주제)', 응집성은 '형식(연결 장치)'에 관한 것."},
+{cat:"read",topic:"읽기 전략",q:"글을 읽기 전 제목·차례를 훑어 내용을 예측하는 읽기 전략은?",
+ choices:["훑어읽기(스키밍)","꼼꼼히읽기","비판적 읽기","추론적 읽기","감상적 읽기"],ans:0,
+ con:"훑어읽기(스키밍)는 전체 내용을 빠르게 파악하는 전략이다. 꼼꼼히읽기는 세부 정보를 파악할 때 쓴다.",
+ rea:"제목·차례를 훑어 내용을 '예측'하는 것은 훑어읽기(스키밍)다.",
+ kil:"비판적 읽기(③)는 내용의 타당성·신뢰성을 따지는 전략으로 예측과는 다르다. 읽기 목적에 따른 전략 차이를 구분하자."},
+/* ══ 어휘 (5문항) ════════════════════════════════════════════════════════ */
+{cat:"voca",topic:"한자성어",q:"'같은 처지의 사람끼리 서로 가엾게 여김'을 뜻하는 한자성어는?",
+ choices:["동병상련(同病相憐)","새옹지마(塞翁之馬)","우유부단(優柔不斷)","일석이조(一石二鳥)","작심삼일(作心三日)"],ans:0,
+ con:"한자성어는 한자 네 자로 교훈이나 상황을 압축한 표현이다.",
+ rea:"동병상련은 '같은 병을 앓는 사람끼리 서로 가엾게 여김', 즉 비슷한 처지의 동정을 뜻한다.",
+ kil:"새옹지마(②)는 '인생의 길흉화복은 알 수 없다'는 뜻으로 전혀 다르다. 글자 느낌만으로 고르면 안 된다."},
+{cat:"voca",topic:"한자성어 - 상황",q:"다음 중 '일석이조(一石二鳥)'를 사용하기에 가장 알맞은 상황은?",
+ choices:["오랫동안 미루던 일을 드디어 끝냈다","운동도 되고 기분도 좋아지는 산책을 즐겼다","친구와 오해가 풀려 화해했다","공부를 너무 많이 해서 머리가 아팠다","작은 선물이 상대에게 큰 감동을 주었다"],ans:1,
+ con:"일석이조는 '돌 하나로 새 두 마리를 잡는다'는 뜻으로, 한 가지 행동으로 두 가지 이득을 얻음을 의미한다.",
+ rea:"산책 한 번에 '운동(1)'과 '기분 전환(2)'이라는 두 가지 이득을 얻으므로 일석이조다.",
+ kil:"⑤ '작은 것으로 큰 효과'는 일석이조가 아니라 '소탐대실'의 반대 개념에 가깝다. 일석이조는 반드시 '한 행동, 두 이득'이어야 한다."},
+{cat:"voca",topic:"속담",q:"'쉬운 일도 함께하면 훨씬 수월하다'는 뜻에 가장 가까운 속담은?",
+ choices:["백지장도 맞들면 낫다","우물 안 개구리","소 잃고 외양간 고친다","등잔 밑이 어둡다","가는 말이 고와야 오는 말이 곱다"],ans:0,
+ con:"속담은 오랜 경험에서 나온 교훈을 비유적으로 압축한 표현이다.",
+ rea:"'백지장(얇은 종이)도 맞들면 낫다'는 쉬운 일도 협력하면 더 낫다는 뜻이다.",
+ kil:"'소 잃고 외양간 고친다'(③)는 일이 잘못된 뒤 뒤늦게 대비함을 뜻해 협력과 무관하다."},
+{cat:"voca",topic:"관용어",q:`"그 사람은 발이 넓다"에서 '발이 넓다'의 관용적 의미는?`,
+ choices:["키가 크다","아는 사람이 많다","걸음이 빠르다","신발이 크다","욕심이 많다"],ans:1,
+ con:"관용어는 둘 이상의 낱말이 굳어져 글자 그대로가 아닌 새로운 뜻을 지니는 표현이다.",
+ rea:"'발이 넓다'는 '사교적이라 아는 사람이 많다'는 굳어진 뜻이다.",
+ kil:"관용어는 글자 그대로 풀면 안 된다. ④(신발이 크다)처럼 직역하면 함정이다."},
+{cat:"voca",topic:"관용어 - 신체어",q:"'손이 크다'의 관용적 의미로 알맞은 것은?",
+ choices:["손바닥이 실제로 크다","일 처리 속도가 빠르다","씀씀이가 넉넉하고 후하다","힘이 세다","손재주가 좋다"],ans:2,
+ con:"신체어 관용어는 실제 신체와 무관한 뜻을 나타낸다. '손이 크다'는 씀씀이가 넉넉함을 뜻한다.",
+ rea:"'손이 크다'는 음식이나 물건을 넉넉하게 쓰는 후한 성격을 가리키는 관용어다.",
+ kil:"'손이 크다'를 '힘이 세다'(④)나 '손재주가 좋다'(⑤)로 착각하지 말 것. 신체 관용어는 관습적 의미를 통째로 외워야 한다."}
+];
+
+var ESSAY=[
+{cat:"gram",topic:"관형어 찾기",
+ q:"다음 문장에서 관형어를 모두 찾아 쓰고, 각각이 꾸며 주는 말을 함께 쓰시오.",
+ cond:"문장: 나는 새 운동화를 신고 푸른 들판을 달렸다.",
+ model:"관형어 '새' (→ 운동화를 꾸밈), 관형어 '푸른' (→ 들판을 꾸밈)",
+ rub:["관형어 2개 중 1개만 쓰면 -50%","관형어는 찾았으나 꾸며 주는 말을 안 쓰면 항목당 -25%","'운동화·들판' 등 꾸밈을 받는 말을 관형어로 잘못 쓰면 0점"]},
+{cat:"lit",topic:"은유법 분석",
+ q:`"내 마음은 호수요"에 쓰인 표현법을 쓰고, 원관념과 보조관념을 각각 밝히시오.`,
+ cond:"세 가지(표현법 / 원관념 / 보조관념)를 모두 쓸 것.",
+ model:"표현법: 은유법 / 원관념: 내 마음 / 보조관념: 호수",
+ rub:["표현법을 '직유'로 쓰면 0점(연결어 '같이·처럼'이 없음)","원관념·보조관념을 서로 바꿔 쓰면 해당 항목 0점","세 항목 중 누락 시 항목당 감점"]},
+{cat:"gram",topic:"단어의 짜임 서술",
+ q:"'군소리'와 '손발'의 단어 짜임을 각각 쓰고, 그 근거를 서술하시오.",
+ cond:"파생어/합성어 구분 + 근거(어근·접사 분석) 포함할 것.",
+ model:"'군소리': 군-(접두사)+소리(어근) → 파생어 / '손발': 손(어근)+발(어근) → 합성어",
+ rub:["파생어·합성어 구분만 쓰고 근거 없으면 항목당 -50%","접두사·어근을 어근·어근으로 잘못 분석하면 0점","두 단어 중 하나만 분석하면 -50%"]},
+{cat:"lit",topic:"갈등 유형 서술",
+ q:"다음 상황에 나타난 갈등 유형을 쓰고, 그 이유를 한 문장으로 서술하시오.",
+ cond:`상황: "민준이는 병든 어머니를 위해 병원비를 마련해야 하지만, 좋아하는 야구를 그만두어야 할지 갈등한다."`,
+ model:"갈등 유형: 내적 갈등(심리적 갈등) / 이유: 민준이 한 인물의 마음속에서 '야구 지속'과 '어머니 봉양' 두 가지 욕구가 충돌하고 있기 때문이다.",
+ rub:["갈등 유형만 쓰고 이유 없으면 -50%","'인물과 사회의 갈등'처럼 외적 갈등으로 쓰면 유형 0점","이유에 '두 욕구의 충돌'이 드러나지 않으면 -30%"]},
+{cat:"read",topic:"설명 방법 파악",
+ q:"다음 글에 사용된 설명 방법 두 가지를 쓰고, 각각의 근거 문장을 찾아 함께 쓰시오.",
+ cond:`지문: "광합성이란 식물이 빛 에너지를 이용하여 이산화탄소와 물로 포도당을 만드는 과정이다. 광합성은 엽록체에서 일어나며, 명반응과 암반응의 두 단계로 구분된다."`,
+ model:"① 정의 — '광합성이란 ~ 과정이다'에서 광합성의 뜻을 풀이함 / ② 분류(구분) — '명반응과 암반응의 두 단계로 구분된다'에서 기준에 따라 나눔",
+ rub:["설명 방법만 쓰고 근거 문장 없으면 항목당 -50%","'비교·대조'를 설명 방법으로 쓰면 0점(두 단계를 비교하지 않음)","설명 방법 2개 중 1개만 정확하면 50% 부분 점수"]},
+{cat:"lit",topic:"시조 형식 서술",
+ q:"시조의 기본 형식을 '장·구·음절'을 모두 포함하여 서술하고, 종장의 특이한 형식적 규칙을 쓰시오.",
+ cond:"'3장 6구 45자 내외' 표현 및 종장 첫 음보 규칙 포함.",
+ model:"시조는 초장·중장·종장의 3장 6구로 이루어지며 전체 음절 수는 45자 내외다. 종장의 첫 음보는 반드시 3음절이어야 한다.",
+ rub:["'3장 6구 45자 내외' 중 하나라도 빠지면 -30%","종장 첫 음보 규칙 누락 시 -40%","음절 수를 '45자'라고만 쓰고 '내외'를 빠뜨리면 -10%"]},
+{cat:"gram",topic:"발화 기능 서술",
+ q:"다음 두 발화의 공통된 기능을 쓰고, 발화 형식과 실제 기능이 다른 이유를 서술하시오.",
+ cond:`발화 ㉠: "창문 좀 닫아 줄 수 있어?" / 발화 ㉡: "여기 좀 춥지 않아?"`,
+ model:"공통 기능: 요청(명령) 기능 / 이유: 두 발화는 표면적으로 의문문 형식이지만, 실제 의도는 상대에게 창문을 닫는 행동을 유도하는 요청이기 때문이다. 발화의 기능은 문장 형식이 아니라 화자의 의도에 따라 결정된다.",
+ rub:["공통 기능을 '진술'이라 쓰면 0점","기능과 이유 중 하나만 쓰면 -50%","'의도'에 대한 언급 없으면 이유 항목 -30%"]},
+{cat:"voca",topic:"한자성어 활용",
+ q:"'새옹지마(塞翁之馬)'의 뜻을 쓰고, 이 성어를 사용하기에 알맞은 상황을 한 가지 만들어 쓰시오.",
+ cond:"뜻 + 구체적 상황 예시 포함.",
+ model:"뜻: 인생의 길흉화복은 예측하기 어려움(나쁜 일이 좋은 일이 되기도 하고 그 반대도 됨). 상황 예: 시험에 떨어져 낙심했는데, 덕분에 더 좋은 회사에 합격하게 되었다.",
+ rub:["뜻을 '좋은 일만 일어난다'처럼 왜곡하면 0점","상황이 '나쁜 일 → 좋은 결과' 또는 '좋은 일 → 나쁜 결과' 구조가 아니면 -50%","뜻만 쓰고 상황 없으면 -50%"]},
+{cat:"lit",topic:"표현법 효과 서술",
+ q:`다음 시구에서 사용된 표현법 두 가지를 찾고, 각각의 효과를 한 문장씩 서술하시오.`,
+ cond:`시구: "내 마음은 호수요, / 그대 노 저어 오오."`,
+ model:"① 은유법('내 마음은 호수요') — 마음의 고요하고 깊은 상태를 호수에 빗대어 시각적으로 선명하게 표현하는 효과가 있다. ② 도치법('그대 노 저어 오오'는 청자를 앞세워 어순을 바꿈) — 청자를 향한 간절한 바람을 강조하는 효과가 있다.",
+ rub:["표현법 2개 중 1개만 맞히면 50% 부분 점수","표현법은 맞혔으나 효과 서술이 없으면 항목당 -50%","효과를 '생생하다'처럼 막연하게 쓰면 -20%"]},
+{cat:"read",topic:"주제 통일성 판단",
+ q:"다음 글에서 주제의 통일성을 해치는 문장을 찾아 쓰고, 그 이유를 서술하시오.",
+ cond:`지문: "독서는 어휘력을 키워 준다. 꾸준히 책을 읽으면 다양한 단어를 자연스럽게 익힐 수 있다. 요즘은 전자책도 많이 보급되어 있다. 어휘력이 늘면 글쓰기 실력도 함께 향상된다." 주제: 독서가 어휘력과 글쓰기 실력에 미치는 영향.`,
+ model:"문장: '요즘은 전자책도 많이 보급되어 있다.' / 이유: 이 문장은 '독서의 어휘력·글쓰기 효과'라는 주제와 직접 관련이 없고, 전자책 보급이라는 별개의 정보를 제공하여 글의 통일성을 깨뜨리기 때문이다.",
+ rub:["해당 문장을 정확히 찾았으나 이유 서술 없으면 -50%","이유에 '주제 이탈'이 명시되지 않으면 -30%","틀린 문장을 지목하면 0점"]}
+];
+
+/* ===== 상태 ===== */
+var S={mode:"home",pool:[],poolName:"",idx:0,picked:null,submitted:false,answers:[],exam:false,sec:0,timer:null,essayOpen:{}};
+var NUM="①②③④⑤⑥";
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function fmt(t){return ("0"+Math.floor(t/60)).slice(-2)+":"+("0"+(t%60)).slice(-2);}
+
+function startTimer(){stopTimer();S.timer=setInterval(function(){S.sec++;var el=document.getElementById("timer");if(el)el.textContent=fmt(S.sec);},1000);}
+function stopTimer(){if(S.timer){clearInterval(S.timer);S.timer=null;}}
+
+function start(list,name,isExam){S.pool=list;S.poolName=name;S.idx=0;S.picked=null;S.submitted=false;S.answers=[];S.exam=isExam;S.sec=0;S.mode="quiz";render();if(isExam)startTimer();}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+/* ===== 렌더 ===== */
+var app=document.getElementById("app");
+function render(){
+  if(S.mode==="home")app.innerHTML=viewHome();
+  else if(S.mode==="quiz")app.innerHTML=viewQuiz();
+  else if(S.mode==="result")app.innerHTML=viewResult();
+  else if(S.mode==="essay")app.innerHTML=viewEssay();
+  window.scrollTo(0,0);
+}
+
+function viewHome(){
+  var cats="";for(var k in CATS){var c=CATS[k];
+    cats+='<button class="cat" data-act="cat" data-cat="'+k+'"><div class="dot" style="background:'+c.color+'">'+c.name[0]+'</div><div class="tx"><b>'+c.name+'</b><small>'+c.desc+'</small></div><div class="arw">›</div></button>';}
+  return '<div class="hero"><div class="eyebrow">중2-1 국어 · 기말고사 대비</div>'+
+    '<h1 class="display">만점 <b>스나이퍼</b></h1>'+
+    '<p>정답만 외우지 말고 <b style="color:#fff">왜 틀렸는지</b>를 잡아내자. 모든 문제에 3단계 입체 해설 — 개념 매핑 · 정답인 이유 · 오답 킬러.</p>'+
+    '<div class="stats"><div class="stat"><div class="n">'+Q.length+'</div><div class="l">객관식 문항</div></div>'+
+    '<div class="stat"><div class="n">'+ESSAY.length+'</div><div class="l">서술형 클리닉</div></div>'+
+    '<div class="stat"><div class="n">4</div><div class="l">출제 영역</div></div></div></div>'+
+    '<div class="sec-h"><div class="bar"></div><h2>영역별 정조준 연습</h2><span>틀린 개념만 집중</span></div>'+
+    '<div class="cards">'+cats+'</div>'+
+    '<div class="sec-h"><div class="bar"></div><h2>실전 모드</h2></div>'+
+    '<div class="cards"><button class="big" data-act="all"><div class="ico">'+reticle(46)+'</div>'+
+    '<div><b>전체 모의고사</b><small>'+Q.length+'문항 무작위 · 타이머 ON</small></div><div class="go">시작</div></button>'+
+    '<button class="cat" data-act="goEssay"><div class="dot" style="background:#16223C">술</div>'+
+    '<div class="tx"><b>서술형 클리닉</b><small>모범답안 · 조건별 감점 기준으로 셀프 채점</small></div><div class="arw">›</div></button></div>'+
+    '<div class="foot">교과 공통 성취기준(천재·미래엔·동아·비상 공통 단원) 기반 · 학습용 콘텐츠</div>';
+}
+
+function viewQuiz(){
+  var cur=S.pool[S.idx],c=CATS[cur.cat];
+  var prog="";for(var i=0;i<S.pool.length;i++){var cl="";if(i===S.idx)cl+="cur ";if(S.answers[i])cl+=(S.answers[i].correct?"ok":"no");prog+='<i class="'+cl+'"></i>';}
+  var choices="";for(var j=0;j<cur.choices.length;j++){
+    var cls="ch",tag="";
+    if(!S.submitted&&S.picked===j)cls+=" sel";
+    if(S.submitted&&j===cur.ans){cls+=" correct";tag='<span class="tag" style="color:var(--emerald)">정답</span>';}
+    if(S.submitted&&S.picked===j&&j!==cur.ans){cls+=" wrong";tag='<span class="tag" style="color:var(--red)">내 선택</span>';}
+    choices+='<button class="'+cls+'" '+(S.submitted?"disabled":'data-act="pick" data-i="'+j+'"')+'><span class="cn">'+NUM[j]+'</span><span>'+esc(cur.choices[j])+'</span>'+tag+'</button>';
+  }
+  var bottom;
+  if(!S.submitted){
+    bottom='<button class="submit" '+(S.picked===null?"disabled":'data-act="submit"')+'>'+(S.picked===null?"선지를 골라줘":"정답 확인 & 해설 보기")+'</button>';
+  }else{
+    var ok=S.picked===cur.ans;
+    bottom='<div class="exp">'+
+      '<div class="verdict '+(ok?"ok":"no")+'">'+(ok?"명중! 정확히 조준했어":"빗나감 — 아래 해설로 다시 조준하자")+'</div>'+
+      '<div class="block b-con"><div class="h"><span class="mk">개</span>개념 매핑</div>'+esc(cur.con)+'</div>'+
+      '<div class="block b-rea"><div class="h"><span class="mk">✓</span>정답인 이유</div>'+esc(cur.rea)+'</div>'+
+      '<div class="block b-kil"><div class="h"><span class="mk">✕</span>오답 킬러<span class="star">★ 가장 많이 틀림</span></div>'+esc(cur.kil)+'</div>'+
+      '</div><button class="next" data-act="next">'+(S.idx+1<S.pool.length?"다음 문제 →":"결과 확인하기")+'</button>';
+  }
+  return '<div class="top"><button class="exit" data-act="exit">← 나가기</button>'+
+    '<span class="pill" style="background:'+c.color+'">'+c.name+' · '+esc(cur.topic)+'</span>'+
+    (S.exam?'<span class="time'+(S.submitted?"":" run")+'" id="timer">'+fmt(S.sec)+'</span>':'')+'</div>'+
+    '<div class="prog">'+prog+'</div>'+
+    '<div class="q"><div class="qnum">Q'+(S.idx+1)+' / '+S.pool.length+'</div>'+
+    '<div class="qtext">'+esc(cur.q)+'</div>'+
+    (cur.passage?'<div class="passage">'+esc(cur.passage)+'</div>':'')+
+    '<div class="choices">'+choices+'</div>'+bottom+'</div>';
+}
+
+function viewResult(){
+  var total=S.pool.length,score=0,byCat={};
+  for(var i=0;i<S.pool.length;i++){var k=S.pool[i].cat;byCat[k]=byCat[k]||{t:0,c:0};byCat[k].t++;if(S.answers[i]&&S.answers[i].correct){byCat[k].c++;score++;}}
+  var acc=Math.round(score/total*100),deg=score/total*360;
+  var rows="";for(var kk in byCat){var v=byCat[kk];rows+='<div class="tr"><div class="nm"><i style="background:'+CATS[kk].color+'"></i>'+CATS[kk].name+'</div><div class="ba"><span style="width:'+(v.c/v.t*100)+'%"></span></div><div class="vv">'+v.c+'/'+v.t+'</div></div>';}
+  var wrongN=0;for(var w=0;w<S.answers.length;w++)if(S.answers[w]&&!S.answers[w].correct)wrongN++;
+  var wb=wrongN?'<button class="act full" data-act="wrong">오답만 다시 정조준 ('+wrongN+'문항)</button>':'';
+  return '<div class="res-hero"><div class="eyebrow">'+esc(S.poolName)+' 결과</div>'+
+    '<div class="ring" style="background:conic-gradient(var(--amber) '+deg+'deg, rgba(255,255,255,.14) 0)">'+
+    '<div class="sc"><div><b>'+score+'<span style="font-size:22px;color:#9DAAC4">/'+total+'</span></b><br><small>명중 문항</small></div></div></div>'+
+    '<div class="acc">정확도 <b>'+acc+'%</b>'+(S.exam?' · 소요 시간 '+fmt(S.sec):'')+'</div></div>'+
+    '<div class="sec-h"><div class="bar"></div><h2>영역별 명중률</h2></div>'+
+    '<div class="tbl">'+rows+'</div>'+
+    '<div class="actions">'+wb+
+    '<button class="act p" data-act="retry">다시 풀기</button>'+
+    '<button class="act s" data-act="home">홈으로</button></div>'+
+    '<div class="foot">오답 킬러 부분을 다시 읽으며 "왜 낚였는지"를 점검하면 메타인지가 올라간다.</div>';
+}
+
+function viewEssay(){
+  var out='<div class="top"><button class="exit" data-act="home">← 나가기</button><span class="pill" style="background:#16223C">서술형 클리닉</span></div>'+
+    '<div class="sec-h"><div class="bar"></div><h2>조건별 감점 기준으로 셀프 채점</h2></div>';
+  for(var i=0;i<ESSAY.length;i++){var e=ESSAY[i],c=CATS[e.cat];
+    var body;
+    if(!S.essayOpen[i]){body='<button class="reveal" data-act="reveal" data-i="'+i+'">먼저 답을 쓴 뒤 — 모범답안 & 감점 기준 보기</button>';}
+    else{var rub="";for(var r=0;r<e.rub.length;r++)rub+='<li>'+esc(e.rub[r])+'</li>';
+      body='<div class="model"><div class="lab">모범 답안</div><div class="ans">'+esc(e.model)+'</div>'+
+      '<div class="lab2">조건별 감점 기준</div><ul class="rub">'+rub+'</ul></div>';}
+    out+='<div class="essay"><span class="pill" style="background:'+c.color+';display:inline-block;margin-bottom:8px">'+c.name+' · '+esc(e.topic)+'</span>'+
+      '<div class="qtext">'+esc(e.q)+'</div><div class="cond"><b>조건</b> · '+esc(e.cond)+'</div>'+body+'</div>';
+  }
+  out+='<div class="foot">서술형은 \'키워드 + 조건 충족\'이 핵심. 감점 포인트를 형광펜처럼 체크하자.</div>';
+  return out;
+}
+
+/* ===== 이벤트(위임) ===== */
+app.addEventListener("click",function(ev){
+  var t=ev.target.closest("[data-act]");if(!t)return;
+  var a=t.getAttribute("data-act");
+  if(a==="cat")start(Q.filter(function(x){return x.cat===t.getAttribute("data-cat");}),CATS[t.getAttribute("data-cat")].name,false);
+  else if(a==="all")start(shuffle(Q),"전체 모의고사",true);
+  else if(a==="goEssay"){S.mode="essay";S.essayOpen={};render();}
+  else if(a==="exit"){stopTimer();S.mode="home";render();}
+  else if(a==="home"){stopTimer();S.mode="home";render();}
+  else if(a==="pick"){S.picked=parseInt(t.getAttribute("data-i"),10);render();}
+  else if(a==="submit"){
+    if(S.picked===null)return;var cur=S.pool[S.idx];var correct=S.picked===cur.ans;
+    S.answers[S.idx]={correct:correct,cat:cur.cat};S.submitted=true;stopTimer();render();
+  }
+  else if(a==="next"){
+    if(S.idx+1<S.pool.length){S.idx++;S.picked=null;S.submitted=false;render();if(S.exam)startTimer();}
+    else{stopTimer();S.mode="result";render();}
+  }
+  else if(a==="retry")start(S.pool,S.poolName,S.exam);
+  else if(a==="wrong"){var wr=S.pool.filter(function(_,i){return S.answers[i]&&!S.answers[i].correct;});if(wr.length)start(wr,"오답 다시 풀기",false);}
+  else if(a==="reveal"){S.essayOpen[parseInt(t.getAttribute("data-i"),10)]=true;render();}
+});
+
+render();
+</script>
+</body>
+</html>
